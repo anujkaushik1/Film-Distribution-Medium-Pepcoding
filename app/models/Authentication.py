@@ -1,12 +1,13 @@
+from enum import unique
 from app import db
 
 class UserModel(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String())
-    email = db.Column(db.String())
-    password = db.column(db.String())
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100), unique = True)
+    password = db.Column(db.String(100))
 
     def __init__(self, name, email, password):
         self.name = name
